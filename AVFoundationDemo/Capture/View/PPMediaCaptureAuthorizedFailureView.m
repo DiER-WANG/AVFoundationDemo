@@ -23,6 +23,7 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self initSubViews];
+        [self initSubLayouts];
     }
     return self;
 }
@@ -39,9 +40,11 @@
     }];
     [self.audioAccessLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.equalTo(self.videoAccessLabel.mas_top);
+        make.centerX.equalTo(self.videoAccessLabel);
     }];
     [self.photoAccessLabel mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.videoAccessLabel.mas_bottom);
+        make.centerX.equalTo(self.videoAccessLabel);
     }];
 }
 
