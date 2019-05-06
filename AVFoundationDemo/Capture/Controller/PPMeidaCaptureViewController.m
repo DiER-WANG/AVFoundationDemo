@@ -9,10 +9,12 @@
 #import "PPMeidaCaptureViewController.h"
 #import "PPMediaCaptureHelper.h"
 #import "PPMediaCaptureAuthorizationStatusModel.h"
+#import "PPMediaCaptureAuthorizedFailureView.h"
+#import <Masonry.h>
 
 @interface PPMeidaCaptureViewController ()
 
-@property (nonatomic, strong) UIView *<#var#>;
+@property (nonatomic, strong) PPMediaCaptureAuthorizedFailureView *failureView;
 
 @end
 
@@ -39,12 +41,26 @@
             // 配置 capture 相关对象
         } else {
             // 展示没有权限 提示 UI
+            [self configFailureView:authorizationStatus];
         }
     }];
 }
 
+- (void)configFailureView:(PPMediaCaptureAuthorizationStatusModel *)status {
+    [self.view addSubview:self.failureView];
+    [self.failureView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self.view);
+    }];
+    self.failureView.status = status;
+}
 
-
+#pragma mark - Getter and Setter
+- (PPMediaCaptureAuthorizedFailureView *)failureView {
+    if (!_failureView) {
+        _failureView = [[PPMediaCaptureAuthorizedFailureView alloc] initWithFrame:CGRectZero];
+    }
+    return _failureView;
+}
 
 
 @end

@@ -44,7 +44,7 @@
             if (block) {
                 block(status == PHAuthorizationStatusAuthorized);
             }
-        })
+        });
     }];
 }
 

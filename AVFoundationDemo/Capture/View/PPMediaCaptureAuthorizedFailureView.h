@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class PPMediaCaptureAuthorizationStatusModel;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PPMediaCaptureAuthorizedFailureView : UIView
 
 
-
+@property (nonatomic, strong) PPMediaCaptureAuthorizationStatusModel *status;
 
 @end
 
